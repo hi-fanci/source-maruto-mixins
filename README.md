@@ -42,15 +42,18 @@ sass --watch styles.scss:styles.css
 </details>
 <details>
 <summary>Font Family</summary>
+
 ```css
 .class-name {
     @extend %ff-[noto-sans, roboto, poppins, ..., custom];
 }
 ```
+
 </details>
 
 <details>
 <summary>Font Size</summary>
+
 ```css
 .class-name {
     @extend %fz-[14, 16, 18, ..., custom];
@@ -80,6 +83,7 @@ bảng hạ font
 
 <details>
 <summary>Font Weight</summary>
+
 ```css
 .class-name {
     @extend %fw-[100, 200, ..., 900];
@@ -113,6 +117,7 @@ bảng hạ font
 
 <details>
 <summary>Text Align</summary>
+
 ```css
 .class-name {
     @extend %txt-[l-c-r];
