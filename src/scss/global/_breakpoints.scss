@@ -1,0 +1,15 @@
+@use "sass:map";
+
+//! global > breakpoint
+$media_min_query: (
+    "md": "only screen and (min-width: 768px)",
+    "lg": "only screen and (min-width: 1024px)",
+    "xl": "only screen and (min-width: 1200px)",
+    "xxl": "only screen and (min-width: 1600px)",
+);
+
+@mixin media_min_query($index: "md") {
+    @media #{map.get($media_min_query, $index)} {
+        @content;
+    }
+}

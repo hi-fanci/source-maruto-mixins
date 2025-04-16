@@ -1,0 +1,317 @@
+@use "sass:list";
+@use "./breakpoints" as *;
+@use "./function" as *;
+
+// -- only pc
+%pc {
+    display: none !important;
+
+    @include media_min_query() {
+        display: initial !important;
+    }
+}
+
+// -- only sp
+%sp {
+    @include media_min_query() {
+        display: none !important;
+    }
+}
+
+// -- display
+$displays: (
+    "i": inline,
+    "iblock": inline-block,
+    "block": block,
+    "iflex": inline-flex,
+    "flex": flex,
+    "none": none,
+);
+
+@each $name, $prop in $displays {
+    %d-#{$name} {
+        display: $prop;
+    }
+}
+
+@include media_min_query() {
+    @each $name, $prop in $displays {
+        %md-d-#{$name} {
+            display: $prop;
+        }
+    }
+}
+
+// -- flex-direction
+$flex-directions: (
+    "row": row,
+    "row-re": row-reverse,
+    "col": column,
+    "col-re": column-reverse,
+);
+
+@each $name, $prop in $flex-directions {
+    %flex-#{$name} {
+        flex-direction: $prop;
+    }
+}
+
+@include media_min_query() {
+    @each $name, $prop in $flex-directions {
+        %md-flex-#{$name} {
+            flex-direction: $prop;
+        }
+    }
+}
+
+// -- align-items
+$align-items: (
+    "center": center,
+    "start": flex-start,
+    "end": flex-end,
+);
+
+@each $name, $prop in $align-items {
+    %items-#{$name} {
+        align-items: $prop;
+    }
+}
+
+@include media_min_query() {
+    @each $name, $prop in $align-items {
+        %md-items-#{$name} {
+            align-items: $prop;
+        }
+    }
+}
+
+// -- justify-content
+$justify-contents: (
+    "center": center,
+    "start": flex-start,
+    "end": flex-end,
+);
+
+@each $name, $prop in $justify-contents {
+    %content-#{$name} {
+        justify-content: $prop;
+    }
+}
+
+@include media_min_query() {
+    @each $name, $prop in $justify-contents {
+        %md-content-#{$name} {
+            justify-content: $prop;
+        }
+    }
+}
+
+// -- object-fit
+$object-fit: (
+    "contain": contain,
+    "fill": fill,
+    "cover": cover,
+    "none": none,
+);
+
+@each $name, $prop in $object-fit {
+    %o-#{$name} {
+        object-fit: $prop;
+    }
+}
+
+// -- line-clamp
+%line-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+@include media_min_query() {
+    %md-line-clamp {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+}
+
+@for $i from 1 through 3 {
+    %line-clamp-#{$i} {
+        line-clamp: $i;
+        -webkit-line-clamp: $i;
+    }
+}
+
+@include media_min_query() {
+    @for $i from 1 through 3 {
+        %md-line-clamp-#{$i} {
+            line-clamp: $i;
+            -webkit-line-clamp: $i;
+        }
+    }
+}
+
+// -- position
+$positions: (
+    "fixed": fixed,
+    "sticky": sticky,
+    "abs": absolute,
+    "rel": relative,
+    "sta": static,
+);
+
+@each $name, $prop in $positions {
+    %pos-#{$name} {
+        position: $prop;
+    }
+}
+
+@include media_min_query() {
+    @each $name, $prop in $positions {
+        %md-pos-#{$name} {
+            position: $prop;
+        }
+    }
+}
+
+//
+$text-aligns: (
+    "left": left,
+    "right": right,
+    "center": center,
+);
+
+// -- text-align
+@each $name, $prop in $text-aligns {
+    %txt-#{$name} {
+        text-align: $prop;
+    }
+}
+
+@include media_min_query() {
+    @each $name, $prop in $text-aligns {
+        %md-txt-#{$name} {
+            text-align: $prop;
+        }
+    }
+}
+
+// -- font-family
+$font-sans-serif: (
+    "barlow": "Barlow",
+    "barlow-con": "Barlow Condensed",
+    "bebas": "Bebas Neue",
+    "inter": "Inter",
+    "lato": "Lato",
+    "lora": "Lora",
+    "mont-serrat": "Montserrat",
+    "noto-sans": "Noto Sans JP",
+    "nunito": "Nunito Sans",
+    "outfit": "Outfit",
+    "oswald": "Oswald",
+    "poppins": "Poppins",
+    "roboto": "Roboto",
+    "roboto-con": "Roboto Condensed",
+    "rubik": "Rubik",
+    "ubuntu": "Ubuntu",
+    "overpass": "Overpass",
+);
+$font-serif: (
+    "noto-serif": "Noto Serif JP",
+    "ovo": "Ovo",
+    "zen-maru": "Zen Maru Gothic",
+);
+
+@each $name, $prop in $font-sans-serif {
+    %ff-#{$name} {
+        font-family: "#{$prop}", sans-serif;
+    }
+}
+
+@each $name, $prop in $font-serif {
+    %ff-#{$name} {
+        font-family: "#{$prop}", serif;
+    }
+}
+
+// open with html 100%
+// $p2r: 0.0625rem;
+
+// open with html 62.5%
+$p2r: 0.1rem;
+$fonts: (
+    "16": (
+        "sp": 14,
+        "pc": 16,
+    ),
+    "160": (
+        "sp": 40,
+        "liq": (
+            40,
+            100,
+        ),
+    ),
+);
+
+@each $name, $arr in $fonts {
+    %fz-#{ $name } {
+        @each $type, $unit in $arr {
+            @if ($type== "sp") {
+                font-size: $unit * $p2r;
+            } @else if ($type== "pc") {
+                @include media_min_query() {
+                    font-size: $unit * $p2r;
+                }
+            } @else {
+                $v1: list.nth($unit, 1);
+                $v2: list.nth($unit, 2);
+                @include media_min_query() {
+                    font-size: fn-liq($v1, $v2);
+                }
+            }
+        }
+    }
+}
+
+// -- font-weight
+@for $i from 1 to 10 {
+    %fw-#{$i * 100} {
+        font-weight: #{$i * 100};
+    }
+}
+
+// -- letter-spacing
+$lts: (-50, -100, 0, 50, 100);
+
+@each $prop in $lts {
+    %lts-#{$prop} {
+        letter-spacing: #{$prop * 0.001em};
+    }
+}
+@include media_min_query() {
+    @each $prop in $lts {
+        %md-lts-#{$prop} {
+            letter-spacing: #{$prop * 0.001em};
+        }
+    }
+}
+
+// ------------------ utils
+%fill {
+    width: 100%;
+    height: 100%;
+}
+
+%txt-upper {
+    text-transform: uppercase;
+}
+
+%txt-palt {
+    font-feature-settings: "palt";
+}
+
+%txt-phone {
+    @include media_min_query() {
+        pointer-events: none;
+    }
+}

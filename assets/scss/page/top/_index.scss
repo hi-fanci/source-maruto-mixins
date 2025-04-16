@@ -1,7 +1,0 @@
-@use "./../../global/" as *;
-.a {
-    // @extend %c-light;
-    @extend %fw-500;
-    @extend %ff-noto-sans;
-    font-family: $f_base;
-}

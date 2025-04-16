@@ -1,0 +1,19 @@
+@use "./../global/breakpoints" as *;
+$container-width: 1160px;
+$container-offset: 20px;
+
+.container {
+    width: 100%;
+    padding-left: $container-offset;
+    padding-right: $container-offset;
+
+    @include media_min_query() {
+        max-width: #{$container-width + $container-offset * 2};
+        margin-right: auto;
+        margin-left: auto;
+    }
+    &_fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

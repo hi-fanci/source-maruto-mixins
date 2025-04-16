@@ -44,18 +44,6 @@
     transition-delay: 1.5s;
 }
 
-.js_inview[data-duration="1s"] {
-    transition-duration: 1s;
-}
-
-.js_inview[data-duration="1.5s"] {
-    transition-duration: 1.5s;
-}
-
-.js_inview[data-duration="2s"] {
-    transition-duration: 2s;
-}
-
 .js_inview {
     opacity: 0;
     transition-property: opacity, transform;

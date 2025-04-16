@@ -1,0 +1,60 @@
+@use "./../global" as *;
+html {
+    line-height: 1.6;
+    scrollbar-width: thin;
+}
+
+body {
+    @extend %fz-16;
+    font-family: $f_base;
+    font-weight: 400;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+
+    width: 100%;
+    left: 0;
+}
+main {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.wrapper,
+#wrapper {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.pc {
+    @extend %pc;
+}
+.sp {
+    @extend %sp;
+}
+
+.nav_link_block,
+.nav_link {
+    @include media_min_query() {
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}
+
+.item_link,
+.nav_link {
+    display: inline-block;
+    transition: 300ms ease-out;
+}
+
+.item_link_block,
+.nav_link_block {
+    display: block;
+    transition: 300ms ease-out;
+}

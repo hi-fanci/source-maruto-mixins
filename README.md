@@ -16,7 +16,7 @@ body {
 
 ```
 cd css
-sass --watch styles.scss:styles.css
+sass --watch src/scss:public/assets/css
 ```
 
 <details>
